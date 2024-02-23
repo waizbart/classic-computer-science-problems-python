@@ -39,7 +39,15 @@ def fib6(n: int) -> Generator[int, None, None]:
     for _ in range(1, n):
         last, next = next, last + next
         yield next
-        
+
+# EXERCISE
+def my_fib(n: int) -> int:
+    last: int = 0
+    next: int = 1
+    for _ in range(1, n):
+        last, next = next, last + next
+    return next if n > 0 else 0
+    
 def test_fib(label: str, function: Callable[[int], Union[int, Generator[int, None, None]]], n):
     start_time = time()
     
@@ -47,14 +55,11 @@ def test_fib(label: str, function: Callable[[int], Union[int, Generator[int, Non
     
     print("Label: {}".format(label))
     print("Result: {}".format(result))
-    print("Elapsed time: {:.2f}s\n".format(time() - start_time))
+    print("Elapsed time: {:.20f}s\n".format(time() - start_time))
 
 if __name__ == "__main__":
-    N = 40
+    N = 1000
     
-    test_fib("Fib2", fib2, N)
-    test_fib("Fib3", fib3, N)
-    test_fib("Fib4", fib4, N)
     test_fib("Fib5", fib5, N)
-    test_fib("Fib6", fib6, N)
+    test_fib("MyFib", my_fib, N)
     
