@@ -38,14 +38,3 @@ class Queue:
     
     def __repr__(self) -> str:
         return self.__str__()
-
-# Test
-queue = Queue()
-print(queue.is_empty()) # True
-queue.push(1)
-queue.push(2)
-queue.push(3)
-
-queue.pop()
-
-print(queue) # Queue: [1, 2, 3]
