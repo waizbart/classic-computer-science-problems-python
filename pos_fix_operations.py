@@ -11,14 +11,7 @@ test_cases = [
     }
 ]
 
-
-
-for test in test_cases:
-    duracell = Stack()
-    
-    in_list = test["input"]
-    expected_result = test["result"]
-    
+def pox_fix_calc(in_list):
     for item in in_list:
         if item.isdigit():
             duracell.push(int(item))
@@ -35,7 +28,15 @@ for test in test_cases:
             else:
                 duracell.push(float(n2 * n1))
                 
-    r = duracell.peek()
+    return duracell.peek()
+
+for test in test_cases:
+    duracell = Stack()
+    
+    in_list = test["input"]
+    expected_result = test["result"]
+    
+    r = pox_fix_calc(in_list)
     
     assert r == expected_result
     
